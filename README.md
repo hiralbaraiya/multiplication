@@ -1,2 +1,0 @@
-# multiplication
-multiplication table
