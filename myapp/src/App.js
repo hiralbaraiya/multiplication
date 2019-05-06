@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div className="App">
         <input type="radio" name="gender" onChange={() => { this.setState({ ismulti: true }) }} checked={this.state.ismulti} /> Multiple
-        <input type="radio" name="gender" onChange={() => { this.setState({ ismulti: false, selectedOption: option.splice(1) }) }} /> Single
+        <input type="radio" name="gender" onChange={() => { this.setState({ ismulti: false, selectedOption: option.slice(0,1) }) }} /> Single
         <br></br><br></br> 
         <Select
           value={option}
@@ -46,12 +46,18 @@ class App extends Component {
           options={this.data}
         />
         {
-          this.state.ismulti === false ?
+          this.state.ismulti === false ?option.length? <div className='list' onClick={() => this.removeOpt(0)}>{option[0].value}
+             
+          </div>:
             option.value ?
               <div className='list' onClick={() => this.removeOpt(0)}>{option.value}
              
               </div> :
-              <p></p> :
+              <p></p> :option.value?
+              <div className='list' onClick={() => this.removeOpt(0)}>{option.value}
+             
+              </div> 
+              :
             option.length !== 0 ?
               option.map((list, index) => {
                 return (<div className='list' onClick={() => this.removeOpt(index)}>{list.value}
